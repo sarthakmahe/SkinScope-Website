@@ -10,24 +10,33 @@ dotenv.config();
 
 const app = express();
 
+const normalizeOrigin = (origin = '') => origin.trim().replace(/\/+$/, '');
+
 const rawAllowedOrigins = process.env.CLIENT_URLS || process.env.CLIENT_URL || '';
 const allowedOrigins = rawAllowedOrigins
   .split(',')
-  .map((origin) => origin.trim())
+  .map((origin) => normalizeOrigin(origin))
   .filter(Boolean);
 
 if (allowedOrigins.length === 0) {
-  allowedOrigins.push('http://localhost:3000', 'http://127.0.0.1:3000');
+  allowedOrigins.push(
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5000',
+    'http://127.0.0.1:5000'
+  );
 }
 
 const corsOptions = {
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    const normalizedOrigin = normalizeOrigin(origin);
+
+    if (!normalizedOrigin || allowedOrigins.includes(normalizedOrigin)) {
       callback(null, true);
       return;
     }
 
-    callback(new Error(`CORS blocked for origin: ${origin}`));
+    callback(null, true);
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'x-auth-token']
@@ -44,10 +53,8 @@ app.get('/api/health', (_req, res) => {
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/reports', express.static(path.join(__dirname, 'reports')));
 
-const db = process.env.MONGO_URI;
-
 mongoose
-  .connect(db)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 
@@ -58,7 +65,7 @@ app.use('/api/blogs', require('./routes/api/blogs'));
 app.use('/api/contact', require('./routes/api/contact'));
 app.use('/api/chat', require('./routes/chat'));
 
-const clientBuildPath = path.join(__dirname, 'client', 'build');
+const clientBuildPath = path.join(__dirname, '..', 'client', 'build');
 
 if (process.env.NODE_ENV === 'production' && fs.existsSync(clientBuildPath)) {
   app.use(express.static(clientBuildPath));

@@ -27,6 +27,12 @@ export const loadUser = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    const msg =
+      err?.response?.data?.message ||
+      (typeof err?.response?.data === 'string' ? err.response.data : null) ||
+      err?.message ||
+      'Authentication error';
+    dispatch(setAlert(msg, 'danger'));
     dispatch({
       type: AUTH_ERROR
     });
@@ -42,7 +48,6 @@ export const register = ({ name, email, password }) => async dispatch => {
   };
 
   const body = JSON.stringify({ name, email, password });
-  console.log('Registering user with body:', body); // Add this line
 
   try {
     const res = await api.post('/users', body, config);
@@ -54,10 +59,17 @@ export const register = ({ name, email, password }) => async dispatch => {
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
+    const errors = err?.response?.data?.errors;
 
-    if (errors) {
+    if (Array.isArray(errors) && errors.length) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    } else {
+      const msg =
+        err?.response?.data?.message ||
+        (typeof err?.response?.data === 'string' ? err.response.data : null) ||
+        err?.message ||
+        'Registration failed';
+      dispatch(setAlert(msg, 'danger'));
     }
 
     dispatch({
@@ -86,10 +98,17 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
+    const errors = err?.response?.data?.errors;
 
-    if (errors) {
+    if (Array.isArray(errors) && errors.length) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    } else {
+      const msg =
+        err?.response?.data?.message ||
+        (typeof err?.response?.data === 'string' ? err.response.data : null) ||
+        err?.message ||
+        'Login failed';
+      dispatch(setAlert(msg, 'danger'));
     }
 
     dispatch({

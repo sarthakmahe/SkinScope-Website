@@ -12,7 +12,10 @@ export const loadRecords = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: RECORDS_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: {
+        msg: err?.response?.statusText || err?.message || 'Failed to load records',
+        status: err?.response?.status || 500
+      }
     });
   }
 };
