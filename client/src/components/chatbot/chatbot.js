@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './chatbot.css';
 import { useLanguage } from '../../context/LanguageContext';
+import { API_URL } from '../../utils/config';
 
 const PREDICTION_KEYWORDS = [
   'prediction',
@@ -64,7 +65,7 @@ const Chatbot = () => {
     setIsTyping(true);
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(`${API_URL}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

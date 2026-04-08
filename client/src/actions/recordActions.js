@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { LOAD_RECORDS, RECORDS_ERROR } from './types';
+import api from '../utils/api';
 
 // Load user records
 export const loadRecords = () => async dispatch => {
   try {
-    const res = await axios.get('/api/users/me/records');
+    const res = await api.get('/users/me/records');
     dispatch({
       type: LOAD_RECORDS,
       payload: res.data

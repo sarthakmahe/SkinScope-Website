@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED, AUTH_ERROR, LOGOUT, REGISTER_SUCCESS, REGISTER_FAIL } from './types';
 import { setAlert } from './alertActions';
 import setAuthToken from '../utils/setAuthToken';
 import getStoredToken from '../utils/getStoredToken';
+import api from '../utils/api';
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -20,7 +20,7 @@ export const loadUser = () => async dispatch => {
   }
 
   try {
-    const res = await axios.get('http://localhost:5000/api/auth');
+    const res = await api.get('/auth');
 
     dispatch({
       type: USER_LOADED,
@@ -45,7 +45,7 @@ export const register = ({ name, email, password }) => async dispatch => {
   console.log('Registering user with body:', body); // Add this line
 
   try {
-    const res = await axios.post('http://localhost:5000/api/users', body, config);
+    const res = await api.post('/users', body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -77,7 +77,7 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post('http://localhost:5000/api/auth', body, config);
+    const res = await api.post('/auth', body, config);
 
     dispatch({
       type: LOGIN_SUCCESS,

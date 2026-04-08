@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './Records.css';
 import { useLanguage } from '../../context/LanguageContext';
 import getStoredToken from '../../utils/getStoredToken';
+import api from '../../utils/api';
+import { buildAssetUrl } from '../../utils/config';
 
 const getImageUrl = (imagePath) => {
   if (!imagePath) {
@@ -14,11 +15,11 @@ const getImageUrl = (imagePath) => {
   }
 
   if (imagePath.startsWith('/uploads/')) {
-    return `http://localhost:5000${imagePath}`;
+    return buildAssetUrl(imagePath);
   }
 
   const normalizedFileName = imagePath.split(/[\\/]/).pop();
-  return `http://localhost:5000/uploads/${normalizedFileName}`;
+  return buildAssetUrl(`/uploads/${normalizedFileName}`);
 };
 
 const Records = () => {
@@ -32,7 +33,7 @@ const Records = () => {
     const fetchRecords = async () => {
       try {
         const token = getStoredToken();
-        const res = await axios.get('http://localhost:5000/api/users/me/records', {
+        const res = await api.get('/users/me/records', {
           headers: {
             'x-auth-token': token
           }
@@ -57,7 +58,7 @@ const Records = () => {
   const downloadPDF = async (recordId) => {
     try {
       const token = getStoredToken();
-      const res = await axios.get(`http://localhost:5000/api/predictions/pdf/${recordId}`, {
+      const res = await api.get(`/predictions/pdf/${recordId}`, {
         responseType: 'blob',
         headers: {
           'x-auth-token': token
@@ -142,7 +143,7 @@ const Records = () => {
               <div className="record-meta-block">
                 <p><strong>{t('report_upload_title')}:</strong> {record.uploadedReport.originalName}</p>
                 <a
-                  href={`http://localhost:5000${record.uploadedReport.filePath}`}
+                  href={buildAssetUrl(record.uploadedReport.filePath)}
                   target="_blank"
                   rel="noreferrer"
                   className="report-link"

@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
-import axios from 'axios';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import Webcam from 'react-webcam';
 import './Predict.css';
 import { useLanguage } from '../../context/LanguageContext';
 import getStoredToken from '../../utils/getStoredToken';
+import api from '../../utils/api';
 
 const appointmentSlots = [
   '09:00',
@@ -202,7 +202,7 @@ const Predict = () => {
       setError(null);
       resetRecommendationFlow();
 
-      const res = await axios.post('http://localhost:5000/api/predictions', formData, {
+      const res = await api.post('/predictions', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': getStoredToken()
@@ -233,7 +233,7 @@ const Predict = () => {
 
     try {
       setDownloadingPdf(true);
-      const res = await axios.get(`http://localhost:5000/api/predictions/pdf/${recordId}`, {
+      const res = await api.get(`/predictions/pdf/${recordId}`, {
         responseType: 'blob',
         headers: {
           'x-auth-token': getStoredToken()
@@ -273,8 +273,8 @@ const Predict = () => {
 
     try {
       setSubmittingAppointment(true);
-      const res = await axios.post(
-        `http://localhost:5000/api/predictions/appointment/${recordId}`,
+      const res = await api.post(
+        `/predictions/appointment/${recordId}`,
         {
           doctorId: selectedDoctor.id,
           doctorName: selectedDoctor.name,
@@ -316,8 +316,8 @@ const Predict = () => {
 
     try {
       setUploadingReport(true);
-      const res = await axios.post(
-        `http://localhost:5000/api/predictions/report/${recordId}`,
+      const res = await api.post(
+        `/predictions/report/${recordId}`,
         formData,
         {
           headers: {

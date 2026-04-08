@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './BlogPostForm.css';
 import { useLanguage } from '../../context/LanguageContext';
 import { translateMessage } from '../../utils/translateMessage';
 import getStoredToken from '../../utils/getStoredToken';
+import api from '../../utils/api';
 
 const BlogPostForm = () => {
   const { t } = useLanguage();
@@ -15,7 +15,7 @@ const BlogPostForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/blogs', { title, content }, {
+      const res = await api.post('/blogs', { title, content }, {
         headers: { 'x-auth-token': getStoredToken() }
       });
       console.log(res.data);
