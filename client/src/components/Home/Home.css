@@ -1,0 +1,329 @@
+.home-page {
+  background:
+    radial-gradient(circle at top left, rgba(94, 161, 255, 0.2), transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(86, 229, 196, 0.18), transparent 24%),
+    linear-gradient(180deg, #f2f8ff 0%, #f7fbff 45%, #ffffff 100%);
+  color: #09203f;
+}
+
+.home-hero,
+.home-section,
+.home-cta-band {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 4.5rem 0 3rem;
+}
+
+.home-kicker,
+.home-section-heading span,
+.home-cta-band span {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(5, 0, 69, 0.08);
+  color: #0c4ca3;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-hero h1 {
+  margin: 1rem 0 1rem;
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  line-height: 1.02;
+  color: #04122a;
+}
+
+.home-hero p,
+.home-feature-card p,
+.home-journey-card p,
+.home-cta-band p {
+  line-height: 1.75;
+  color: #46607d;
+}
+
+.home-hero-actions,
+.home-cta-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.home-btn:hover {
+  transform: translateY(-2px);
+}
+
+.home-btn-primary {
+  background: linear-gradient(135deg, #050045 0%, #1769d6 100%);
+  color: #ffffff;
+  box-shadow: 0 18px 35px rgba(10, 53, 132, 0.2);
+}
+
+.home-btn-secondary {
+  background: rgba(255, 255, 255, 0.78);
+  color: #0b2d56;
+  border: 1px solid rgba(11, 45, 86, 0.12);
+}
+
+.home-insights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.home-insight-card,
+.home-feature-card,
+.home-journey-card,
+.signal-card {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(112, 145, 176, 0.18);
+  box-shadow: 0 18px 45px rgba(13, 43, 82, 0.08);
+}
+
+.home-insight-card {
+  padding: 1rem 1.1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #10315b;
+}
+
+.home-hero-visual {
+  position: relative;
+  min-height: 520px;
+  border-radius: 32px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95), rgba(214, 237, 255, 0.68) 34%, rgba(6, 34, 71, 0.92) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 30px 70px rgba(7, 21, 58, 0.22);
+}
+
+.scan-orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+}
+
+.scan-orbit-one {
+  inset: 13% 18%;
+}
+
+.scan-orbit-two {
+  inset: 22% 26%;
+}
+
+.scan-core {
+  position: absolute;
+  inset: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(86, 229, 196, 0.8) 0%, rgba(54, 138, 255, 0.28) 45%, rgba(255, 255, 255, 0) 72%);
+}
+
+.scan-core-ring {
+  position: absolute;
+  inset: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  animation: pulse-ring 3.2s ease-out infinite;
+}
+
+.scan-core-ring-delayed {
+  inset: -12px;
+  animation-delay: 1.4s;
+}
+
+.signal-card {
+  position: absolute;
+  width: 210px;
+  padding: 1rem 1.1rem;
+  border-radius: 24px;
+}
+
+.signal-card span {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #5f7fa3;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.signal-card strong {
+  display: block;
+  font-size: 1.55rem;
+  color: #051e3d;
+}
+
+.signal-card p {
+  margin: 0.55rem 0 0;
+  color: #4b6482;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.signal-card-primary {
+  top: 8%;
+  left: 6%;
+}
+
+.signal-card-secondary {
+  right: 7%;
+  bottom: 10%;
+}
+
+.home-section {
+  padding: 1.5rem 0 3rem;
+}
+
+.home-section-heading h2,
+.home-cta-band h2 {
+  margin: 1rem 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #051b38;
+}
+
+.home-feature-grid,
+.home-journey-grid {
+  display: grid;
+  gap: 1.3rem;
+  margin-top: 2rem;
+}
+
+.home-feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.home-journey-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.home-feature-card,
+.home-journey-card {
+  border-radius: 26px;
+  padding: 1.6rem;
+}
+
+.home-feature-card h3 {
+  margin: 0 0 0.8rem;
+  color: #08254a;
+}
+
+.home-section-journey {
+  padding-top: 0.5rem;
+}
+
+.home-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 1rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #050045 0%, #1769d6 100%);
+  color: white;
+  font-weight: 700;
+}
+
+.home-cta-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #03112a 0%, #0b3d91 55%, #31b6b0 100%);
+  color: white;
+  box-shadow: 0 24px 60px rgba(5, 26, 63, 0.24);
+}
+
+.home-cta-band p,
+.home-cta-band h2,
+.home-cta-band span {
+  color: white;
+}
+
+.home-cta-band span {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .home-hero,
+  .home-feature-grid,
+  .home-journey-grid,
+  .home-cta-band {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    padding-top: 3rem;
+  }
+
+  .home-insights,
+  .home-feature-grid,
+  .home-journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-cta-band {
+    display: grid;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero-visual {
+    min-height: 420px;
+  }
+
+  .signal-card {
+    width: calc(100% - 2rem);
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .signal-card-primary {
+    top: 1rem;
+  }
+
+  .signal-card-secondary {
+    bottom: 1rem;
+  }
+}

@@ -1,0 +1,78 @@
+.records-container {
+  padding: 20px;
+  max-width: 960px;
+  margin: auto;
+}
+
+.record-item {
+  border: 1px solid #dbe5ef;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+.record-item p {
+  margin: 5px 0;
+}
+
+.record-image {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.record-meta-block {
+  width: 100%;
+  background: #f7fbff;
+  border: 1px solid #d7e8ff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.image-placeholder {
+  color: #5a6b7d;
+  margin-top: 10px;
+}
+
+.report-link {
+  color: #0056b3;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.report-link:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: auto;
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.btn:hover {
+  background-color: #003d80;
+}
+
+@media (max-width: 768px) {
+  .records-container {
+    padding: 10px;
+  }
+
+  .record-item {
+    padding: 14px;
+  }
+}

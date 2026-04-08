@@ -1,0 +1,18 @@
+{
+  "title": "Welcome",
+  "login": "Login",
+  "signup": "Sign Up"
+,
+
+  "about_title": "About SkinScope",
+  "about_desc": "SkinScope is an AI-powered platform designed to help users detect and understand skin diseases at an early stage. Our goal is to make healthcare more accessible, fast, and reliable using modern technology.",
+
+  "mission_title": "Our Mission",
+  "mission_desc": "We aim to empower individuals by providing smart tools that assist in early diagnosis of skin conditions. By combining healthcare with AI, we strive to reduce delays in treatment and promote better skin health awareness.",
+
+  "team_title": "Meet Our Team",
+
+  "role_leader": "Group Leader",
+  "role_dev": "Frontend & Backend Developer",
+  "role_ml": "ML Model Developer"
+}
