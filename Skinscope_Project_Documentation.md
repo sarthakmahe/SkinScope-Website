@@ -223,7 +223,7 @@ graph TD
 ### Backend Setup
 ```bash
 cd server
-npm install
+node server.js
 # Set up environment variables in .env file
 # Install Python dependencies
 pip install torch torchvision pillow
@@ -232,7 +232,6 @@ pip install torch torchvision pillow
 ### Frontend Setup
 ```bash
 cd client
-npm install
 npm start
 ```
 
